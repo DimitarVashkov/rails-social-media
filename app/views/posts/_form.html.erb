@@ -1,0 +1,5 @@
+<%= form_for(:post) do |f| %>
+  <%= f.label :content, 'What\'s on your mind?' %>
+  <%= f.text_area :content, size: "24x6", style: 'height: 5rem' %>
+  <%= f.submit 'Post', class: 'btn' %>
+<% end %>

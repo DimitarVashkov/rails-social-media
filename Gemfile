@@ -7,6 +7,7 @@ end
 gem 'letter_opener'
 gem 'faker'
 gem 'materialize-sass'
+gem 'material_icons'
 gem 'devise'
 
 gem 'jquery-rails'

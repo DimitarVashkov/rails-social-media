@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :likes
 
+  post '/' => 'posts#create'
   get '/profile' => 'users#index'
   get '/my_posts' => 'posts#mine'
 
