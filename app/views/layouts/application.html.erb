@@ -11,8 +11,11 @@
   <body>
   <%= render 'layouts/nav' %>
   <div class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice %>
+      <p class="btn default notice blue blue-darken-1"><%= notice %></p>
+    <% elsif alert %>
+      <p class="btn default alert blue-darken-1"><%= alert %></p>
+    <% end %>
     <%= yield %>
   </div>
   </body>

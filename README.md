@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Models:
 
-Things you may want to cover:
+### User
+- has_many :posts
+- has_many :comments
+- has_many :likes
 
-* Ruby version
+### Post
+- belongs_to :user
+- has_many :comments
+- has_many :likes, as: :likeable
 
-* System dependencies
+### Comment
+- belongs_to :user
+- belongs_to :post
+- has_many :likes, as: :likeable
 
-* Configuration
+### Like
+- belongs_to :user
+- belongs_to :likeable, polymorphic: true
+- [Polymorphic assoc Rails guide](http://guides.rubyonrails.org/association_basics.html#polymorphic-associations)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Friendship (NOT DONE)
