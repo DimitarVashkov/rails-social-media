@@ -1,0 +1,9 @@
+<h5>My Account</h5>
+
+<h4><%= @user.name %></h4>
+<h4><%= link_to 'My posts', my_posts_path %></h4>
+<h4>About:</h4>
+<p><%= @user.about ? @user.about : 'No information' %></p>
+
+
+<%= link_to 'Update profile', edit_user_registration_path %>

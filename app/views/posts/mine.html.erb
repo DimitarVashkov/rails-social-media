@@ -1,0 +1,5 @@
+<h4><%= @user.name %> Posts</h4>
+
+<% @user.posts.each do |post| %>
+  <li><%=link_to post.content, post_path(post.id) %></li>
+<% end %>
