@@ -1,12 +1,12 @@
 <h3>Add to friends:</h3>
 <% @incoming.each do |req| %>
   <p><%= req.user.name %>
-    <% # ADD BUTTON FOR ACCEPT /UPDATE %>
+    <%= button_to 'Add friend', friend_request_path(req.id), method: :put, class:'btn'  %>
   </p>
 <% end %>
 
 
 <h3>My requests:</h3>
 <% @outgoing.each do |req| %>
-  <p><%= req.friend.name %></p>
+  <p><%= link_to  req.friend.name, user_path(req.friend.id) %></p>
 <% end %>

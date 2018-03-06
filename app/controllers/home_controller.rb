@@ -1,8 +1,7 @@
 class HomeController < ApplicationController
   def index
     if user_signed_in?
-    @feed = User.find(current_user.id).posts.all.order('posts.updated_at DESC').
-        includes(:comments).order('comments.updated_at DESC')
+    @feed = current_user.feed(current_user)
     end
 
   end

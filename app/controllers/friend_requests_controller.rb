@@ -17,8 +17,9 @@ class FriendRequestsController < ApplicationController
   end
 
   def update
+    @friend_request = FriendRequest.find(params[:id])
     @friend_request.accept
-    head :no_content
+    redirect_to friend_requests_url
   end
 
   def destroy

@@ -1,2 +1,12 @@
-<h1>Friends#index</h1>
-<p>Find me in app/views/friends/index.html.erb</p>
+<h1>My friends</h1>
+
+<ul class="collection">
+  <% @friends.each do |fr| %>
+  <li class="collection-item"><%= link_to fr.name, user_path(fr.id) %>
+      <%= button_to 'Remove friend', friend_path(fr.id),
+          method: :delete, class: 'btn red'%>
+  </li>
+    <% end %>
+</ul>
+
+

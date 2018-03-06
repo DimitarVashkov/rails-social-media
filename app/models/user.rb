@@ -14,9 +14,17 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
 
-  def remove_friend(friend)
-    current_user.friends.destroy(friend)
+  def remove_friend(user, friend)
+    user.friends.destroy(friend)
   end
 
+  def feed(user)
+    friends_ids = User.find(user.id).friends.pluck(:friend_id)
+    friends_ids << user.id
+    Post.where("user_id IN (?)", friends_ids)
+    #feed = User.find(user.id).posts.all.order('posts.updated_at DESC').
+     #   includes(:comments).order('comments.updated_at DESC')
+
+  end
 
 end

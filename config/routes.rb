@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  get 'friends/index'
 
-  get 'friends/destroy'
-
+  resources :friends, only: [:index, :destroy]
   resources :friend_requests
   root 'home#index'
   resources :comments

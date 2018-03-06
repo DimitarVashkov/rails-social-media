@@ -7,7 +7,8 @@ class FriendRequest < ApplicationRecord
 
   # This method will build the actual association and destroy the request
   def accept
-    user.friends << friend
+    user.friendships.create(friend_id: friend.id)
+    friend.friendships.create(friend_id: user.id)
     destroy
   end
 
