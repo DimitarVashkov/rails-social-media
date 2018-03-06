@@ -14,6 +14,12 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
 
+  after_create :send_admin_mail
+
+  def send_admin_mail
+    WelcomeMailer.welcome_email(self).deliver
+  end
+
   def remove_friend(user, friend)
     user.friends.destroy(friend)
   end
