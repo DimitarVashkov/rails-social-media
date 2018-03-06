@@ -4,11 +4,14 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+gem 'figaro'
 gem 'letter_opener'
 gem 'faker'
 gem 'materialize-sass'
 gem 'material_icons'
 gem 'devise'
+
+gem 'omniauth-facebook'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -24,6 +27,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
