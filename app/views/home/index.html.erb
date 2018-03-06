@@ -9,6 +9,22 @@
         <h4><%= distance_of_time_in_words_to_now(item.updated_at).capitalize %>
           <%= item.user.name %> wrote: </h4>
         <p><%= item.content %></p>
+        <p class="blue-text">Likes: <%= item.likes.count %></p>
+
+        <% if item.likes.where('user_id like ?', current_user.id).any? %>
+          <%= form_for(:like,url: like_path(item.id), method: :delete) do |f| %>
+            <%= f.hidden_field :post_id , value: item.id %>
+            <%= f.submit "Remove like", class: 'btn red' %>
+          <% end %>
+
+          <% else %>
+          <%= form_for(:like,url: likes_path) do |f| %>
+            <%= f.hidden_field :post_id , value: item.id %>
+          <i class="material-icons">thumb_up
+          </i>
+            <%= f.submit 'Like', class: 'btn' %>
+          <% end %>
+        <% end %>
         <ul class="collection with-header displayed_comments">
           <li class="collection-header"><span>Comments</span></li>
           <% item.comments.each do |c| %>
@@ -16,6 +32,21 @@
               <span><%= distance_of_time_in_words_to_now(c.updated_at).capitalize %></span>
               <span> <%= c.user.name %> wrote: </span>
               <p><%= c.content %> </p>
+              <p class="blue-text">Likes: <%= c.likes.count %></p>
+
+              <% if c.likes.where('user_id like ?', current_user.id).any? %>
+                <%= form_for(:like,url: like_path(c.id), method: :delete) do |f| %>
+                  <%= f.hidden_field :comment_id , value: c.id %>
+                  <%= f.submit "Remove like", class: 'btn red' %>
+                <% end %>
+                <% else %>
+                <%= form_for(:like,url: likes_path) do |f| %>
+                  <%= f.hidden_field :comment_id , value: c.id %>
+                  <i class="material-icons">thumb_up</i>
+                <%= f.submit 'Like', class:'btn btn-small' %>
+                <% end %>
+              <% end %>
+
             </li>
           <% end %>
           <li>
@@ -37,3 +68,7 @@
 <h3>Sign up today <br> or log into your account!</h3>
 <% end %>
 
+
+
+
+<%= button_to 'Like', likes_path, method: :post %>
