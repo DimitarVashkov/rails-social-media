@@ -7,7 +7,7 @@
     <% @feed.each do |item| %>
       <li class="collection-item">
         <h4><%= distance_of_time_in_words_to_now(item.updated_at).capitalize %>
-          <%= item.user.name %> wrote: </h4>
+          <%= item.user == current_user ? 'I' : item.user.name  %> wrote: </h4>
         <p><%= item.content %></p>
         <p class="blue-text">Likes: <%= item.likes.count %></p>
 
@@ -30,7 +30,7 @@
           <% item.comments.each do |c| %>
             <li>
               <span><%= distance_of_time_in_words_to_now(c.updated_at).capitalize %></span>
-              <span> <%= c.user.name %> wrote: </span>
+              <span> <%=c.user == current_user ? 'I' : c.user.name %> wrote: </span>
               <p><%= c.content %> </p>
               <p class="blue-text">Likes: <%= c.likes.count %></p>
 
