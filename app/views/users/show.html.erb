@@ -1,5 +1,6 @@
 <h4>Profile</h4>
-<h3><%= @user.name %></h3>
+
+<h3><%= gravatar_for @user %> <%= @user.name %></h3>
 
 <p><%= @user.about %></p>
 
