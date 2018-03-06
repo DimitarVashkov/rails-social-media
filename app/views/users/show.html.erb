@@ -1,0 +1,19 @@
+<h4>Profile</h4>
+<h3><%= @user.name %></h3>
+
+<p><%= @user.about %></p>
+
+<p><%= @user.email %></p>
+
+
+<% if current_user.friend_requests.where('friend_id like ?',@user.id).any? %>
+
+  <%= form_tag friend_request_path(@user.id), method: "delete" %>
+   <%= submit_tag "Delete friend request", class: 'btn' %>
+
+<% else %>
+    <%= form_tag(friend_requests_path, method: "post") do %>
+      <%= hidden_field_tag(:friend_id, @user.id) %>
+      <%= submit_tag("Send friend request", class: 'btn') %>
+    <% end %>
+<% end %>

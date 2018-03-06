@@ -1,0 +1,7 @@
+<h4> Find some new friends! </h4>
+
+<ul class="collection">
+  <% @users.each do |user| %>
+    <li class="collection-item"><%= link_to user.name,  user_path(user.id)%></li>
+   <% end %>
+</ul>

@@ -1,3 +1,5 @@
+require 'faker'
+
 Like.delete_all
 Comment.delete_all
 Post.delete_all
@@ -32,3 +34,7 @@ end
   like.save
 end
 
+10.times do
+  User.create!(name: Faker::Name.name, email: Faker::Internet.email,
+               password: 'foobar', password_confirmation: 'foobar')
+end

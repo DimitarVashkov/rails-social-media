@@ -22,4 +22,5 @@
 - belongs_to :likeable, polymorphic: true
 - [Polymorphic assoc Rails guide](http://guides.rubyonrails.org/association_basics.html#polymorphic-associations)
 
-### Friendship (NOT DONE)
+### Friendship
+- Done by following: [Post about mutual friendship](https://dankim.io/mutual-friendship-rails/)
